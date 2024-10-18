@@ -1,0 +1,77 @@
+trigger:
+  branches:
+    include:
+      - master
+      - feature/*
+
+pool: Build SYP
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Intern Udvikling/azure-pipeline-templates
+      ref: refs/heads/release/v1.2
+
+variables:
+  isPullRequest: $[eq(variables['Build.Reason'], 'PullRequest')]
+  isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
+  webSiteName: "dhub-tool"
+  bindingHostname: "$(IIS_WEBSITE_HOSTNAME_PREFIX)scheduling-hub.sydbank.net"
+  guiSourceFolderPath: '$(Pipeline.Workspace)\drop'
+stages:
+  - stage: build_sln
+    displayName: "Build"
+    jobs:
+      - job: build
+        displayName: "Build"
+        steps:
+          - template: templates/build/dotnetcli-build.yml@templates
+            parameters:
+              projectsToPublishToIIS: ["**/scheduling-hub/scheduling-hub.csproj"]            
+              projectsToPublish: ["**/scheduling-hub/scheduling-hub.csproj"]  
+  - stage: 
+    displayName: "Deploy IIS Service Dev"
+    condition: succeeded()
+    dependsOn: [build_sln]
+    variables:
+      - group: "Service Accounts Dev"
+    jobs:
+      - template: "templates/deploy/iis-deploy.yml@templates"
+        parameters:
+          environment: "Web - IISS - Udv"
+          websiteName: "$(webSiteName)"
+          bindingHostname: "$(bindingHostname)"
+          sourceFolderPath: "$(guiSourceFolderPath)"
+          serviceAccountUsername: 'IISS-U-DHUB-tool'
+          serviceAccountPassword: '$(SvcAcc-U)'
+  - stage:
+    displayName: "Deploy IIS Service Preprod"
+    condition: succeeded()
+    dependsOn: [build_sln]
+    variables:
+      - group: "Service Accounts Preprod"
+    jobs:
+      - template: 'templates/deploy/iis-deploy.yml@templates'
+        parameters:
+          environment: 'Web - IISS - Preprod'
+          websiteName: "$(webSiteName)"
+          bindingHostname: "$(bindingHostname)"
+          sourceFolderPath: "$(guiSourceFolderPath)"
+          serviceAccountUsername: 'IISS-B-DHUB-tool'
+          serviceAccountPassword: '$(SvcAcc-B)'
+  - stage:
+    displayName: "Deploy IIS Service Prod"
+    condition: and(succeeded(), eq(variables.IsMaster, 'true'))
+    dependsOn: [build_sln]
+    variables:
+      - group: "Service Accounts Prod"
+    jobs:
+      - template: 'templates/deploy/iis-deploy.yml@templates'
+        parameters:
+          environment: 'Web - IISS - Prod'
+          websiteName: "$(webSiteName)"
+          bindingHostname: "$(bindingHostname)"
+          sourceFolderPath: "$(guiSourceFolderPath)"
+          serviceAccountUsername: 'IISS-P-DHUB-tool'
+          serviceAccountPassword:  '$(SvcAcc-P)'

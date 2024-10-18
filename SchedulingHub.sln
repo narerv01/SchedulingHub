@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchedulingHub.BlazorWebAssembly", "SchedulingHub.BlazorWeb\SchedulingHub.BlazorWebAssembly.csproj", "{FEA2D057-F14F-4912-A80A-405C96AAC910}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchedulingHub.Core", "SchedulingHub.Core\SchedulingHub.Core.csproj", "{9BF0D1F9-4B84-4D29-BF47-0963E6C974DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchedulingHub.Infrastructure", "SchedulingHub.Infrastructure\SchedulingHub.Infrastructure.csproj", "{137B3765-7AE3-43C1-A865-F9DA80D71C9D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchedulingHub.WebApi", "SchedulingHub.WebApi\SchedulingHub.WebApi.csproj", "{7F926707-F09E-4B44-B339-24CE0537E1D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchedulingHub.UnitTests", "SchedulingHub.UnitTests\SchedulingHub.UnitTests.csproj", "{1B68F964-50D7-43AF-A646-256BCB4E4151}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{A75BCC82-77C3-4DD2-A685-5B8D3EBBADEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEA2D057-F14F-4912-A80A-405C96AAC910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEA2D057-F14F-4912-A80A-405C96AAC910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEA2D057-F14F-4912-A80A-405C96AAC910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEA2D057-F14F-4912-A80A-405C96AAC910}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BF0D1F9-4B84-4D29-BF47-0963E6C974DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BF0D1F9-4B84-4D29-BF47-0963E6C974DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BF0D1F9-4B84-4D29-BF47-0963E6C974DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BF0D1F9-4B84-4D29-BF47-0963E6C974DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{137B3765-7AE3-43C1-A865-F9DA80D71C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137B3765-7AE3-43C1-A865-F9DA80D71C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137B3765-7AE3-43C1-A865-F9DA80D71C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137B3765-7AE3-43C1-A865-F9DA80D71C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F926707-F09E-4B44-B339-24CE0537E1D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F926707-F09E-4B44-B339-24CE0537E1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F926707-F09E-4B44-B339-24CE0537E1D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F926707-F09E-4B44-B339-24CE0537E1D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B68F964-50D7-43AF-A646-256BCB4E4151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B68F964-50D7-43AF-A646-256BCB4E4151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B68F964-50D7-43AF-A646-256BCB4E4151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B68F964-50D7-43AF-A646-256BCB4E4151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A75BCC82-77C3-4DD2-A685-5B8D3EBBADEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75BCC82-77C3-4DD2-A685-5B8D3EBBADEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75BCC82-77C3-4DD2-A685-5B8D3EBBADEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75BCC82-77C3-4DD2-A685-5B8D3EBBADEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A50E6665-9FB4-4EBD-939C-4E536326C960}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,40 @@
+﻿@page "/"
+@using SchedulingHub.BlazorWebAssembly.Services
+@using SchedulingHub.Core.Entities
+
+@inject SSISJobService ssisJobService
+
+<h3>SSIS Jobs</h3>
+
+@if (ssisJobs == null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (!ssisJobs.Any())
+{
+    <p><em>No jobs available</em></p>
+}
+else
+{
+    <ul>
+        @foreach (var job in ssisJobs)
+        {
+            <li>
+                <strong>Job ID:</strong> @job.SSISJobID <br />
+                <strong>Project:</strong> @job.SSISProject <br />
+                <strong>Package:</strong> @job.SSISPackage <br />
+                <strong>Enabled:</strong> @job.IsEnabled
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private IEnumerable<SSISJob> ssisJobs;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ssisJobs = await ssisJobService.GetJobsAsync();
+    }
+}
+
